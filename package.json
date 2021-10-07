@@ -1,0 +1,19 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "Api for seminar of systems",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "test": "jest --watch",
+    "dev": "nodemon --config nodemon.json src/server.ts",
+    "dev:debug": "nodemon --config nodemon.json",
+    "start": "node ./dist/server.js"
+  },
+  "keywords": [
+    "api",
+    "rest"
+  ],
+  "author": "Ditmar",
+  "license": "ISC"
+}
