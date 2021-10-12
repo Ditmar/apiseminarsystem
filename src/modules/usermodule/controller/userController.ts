@@ -1,12 +1,12 @@
 import { Request, Response } from "express";
 import { Mongoose } from "mongoose";
 import { createModel, IUser, User } from "../model/UserModel";
-import { UserRepository } from "../repositories/UserRepository";
+import UserRepository from "../repositories/UserRepository";
 
 class UserController {
-  private userRepository: UserRepository<IUser>;
+  private userRepository: UserRepository;
   constructor(mongoose: Mongoose) {
-    this.userRepository = new UserRepository<IUser>(createModel(mongoose));
+    this.userRepository = new UserRepository(createModel(mongoose));
   }
   //method POST
   public async create(request: Request, response: Response) {
