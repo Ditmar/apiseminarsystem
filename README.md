@@ -1,7 +1,13 @@
 # apiseminarsystem
-for wakel up services
+
+## for wakel up services
+
 > docker-compose build
-and
+
+## and
+
 > docker-compose up
-if you want the project in background
+
+## if you want the project in background
+
 > docker-compose up -d
