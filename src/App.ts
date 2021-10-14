@@ -31,7 +31,8 @@ class App {
     const dataBasePort = process.env.DB_PORT;
     const dataBaseUser = process.env.DB_USER;
     const dataBasePassword = process.env.DB_PASSWORD;
-    const connectionString = `mongodb://${dataBaseUser}:${dataBasePassword}@${dataBaseHost}:${dataBasePort}`;
+    const connectionString = `mongodb://${dataBaseUser}:${dataBasePassword}@${dataBaseHost}:${dataBasePort}/${dataBaseName}`;
+    console.log(connectionString);
     this.clientMongo.connect(connectionString);
     this.clientMongo.connection.on("open", () => {
       console.log("sucess  connect to database ");

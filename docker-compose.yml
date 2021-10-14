@@ -1,5 +1,14 @@
 version: "3.5"
 services:
+  mongo:
+    image: mongo
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+    volumes:
+      - "./docker-entrypoint-initdb.d/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro"
   app:
     build: .
     links:
@@ -9,15 +18,10 @@ services:
     volumes:
       - .:/opt/app
       - /opt/app/node_modules
-  mongo:
-    image: mongo
-    ports:
-      - "0.0.0.0:27017:27017"
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: example
   mongo-express:
     image: mongo-express
+    links:
+      - mongo
     ports:
       - 8081:8081
     environment:

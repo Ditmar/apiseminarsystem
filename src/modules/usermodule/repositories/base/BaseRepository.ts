@@ -15,12 +15,12 @@ export abstract class BaseRepository<T> implements IWrite<T>, IRead<T> {
     return await this.entity.findByIdAndUpdate(id, item);
   }
   async delete(id: string): Promise<Boolean> {
-    return await this.entity.remove(id);
+    return await this.entity.remove({ _id: id });
   }
   async find(item: T): Promise<T[]> {
     return await this.entity.find(item);
   }
-  async findOne(item: T): Promise<any> {
-    return await this.entity.findOne(item);
+  async findOne(item: string): Promise<T | any> {
+    return await this.entity.findById(item);
   }
 }

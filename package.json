@@ -10,6 +10,16 @@
     "dev:debug": "nodemon --config nodemon.json",
     "start": "node ./dist/server.js"
   },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnviroment": "node",
+    "collectCoverage": true,
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "/test/",
+      "/dist/"
+    ]
+  },
   "keywords": [
     "api",
     "rest"
@@ -17,9 +27,13 @@
   "author": "Ditmar",
   "license": "ISC",
   "dependencies": {
+    "@types/jest": "^27.0.2",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
-    "mongoose": "^6.0.9"
+    "jest": "^27.2.5",
+    "mongoose": "^6.0.9",
+    "ts-jest": "^27.0.6",
+    "typescript": "^4.4.4"
   },
   "devDependencies": {
     "@types/express": "^4.17.13"
