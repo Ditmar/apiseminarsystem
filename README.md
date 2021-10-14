@@ -8,6 +8,6 @@
 
 > docker-compose up
 
-## if you want the project in background
+## if you want the project run in background
 
 > docker-compose up -d
