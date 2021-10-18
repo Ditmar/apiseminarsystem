@@ -15,12 +15,12 @@ afterAll(() => {
   mongoose.disconnect();
 });
 describe("Crud Operators of UserRespistory Class create", () => {
-  test("Should be create and User ", async () => {
+  test("Should be create an User ", async () => {
     const userRepo = new UserRepository(createModel(mongoose));
     const expected = await userRepo.create(newUser);
     expect(expected.name).toBe(newUser.name);
   });
-  test("Shoud be get a list of users find ", async () => {
+  test("Should be get a list of users find ", async () => {
     const userRepo = new UserRepository(createModel(mongoose));
     const expected: any = await userRepo.find({});
     expect(typeof expected).toBe("object");
@@ -42,7 +42,7 @@ describe("Crud Operators of UserRespistory Class create", () => {
     const expected = await userRepo.findOne(updateUser.id);
     expect(expected.name).toBe("Update User");
   });
-  test("Should be delete user form collection users", async () => {
+  test("Should be delete user from collection users", async () => {
     const userRepo = new UserRepository(createModel(mongoose));
     const list: any = await userRepo.find({});
     list.forEach(async (item: any) => {
