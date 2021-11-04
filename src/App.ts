@@ -1,7 +1,7 @@
 import express, { Express } from "express";
 import dotenv from "dotenv";
 import mongoose, { mongo, Mongoose } from "mongoose";
-
+import fileUpload from "express-fileupload";
 import UserModule from "./modules/usermodule/init";
 
 if (process.env.NODE_ENV == "development") {
@@ -12,8 +12,10 @@ class App {
   private port: number;
   private clientMongo: Mongoose;
   private apiversion: string;
+  private uploadpath: string;
   constructor() {
     this.app = express();
+    this.uploadpath = process.env.UPLOADPATH || "/";
     this.apiversion = process.env.API_VERSION || "api";
     this.port = Number(process.env.PORT) || 8000;
     this.clientMongo = mongoose;
@@ -24,6 +26,7 @@ class App {
   private configure() {
     this.app.use(express.json());
     this.app.use(express.urlencoded());
+    this.app.use(fileUpload({ limits: { fileSize: 20 * 1024 * 1024 } }));
   }
   private configureDatabase() {
     const dataBaseName = process.env.DB_NAME;
@@ -54,6 +57,9 @@ class App {
   }
   public getPort(): number {
     return this.port;
+  }
+  public getUploadPath(): string {
+    return this.uploadpath;
   }
 }
 export default App;

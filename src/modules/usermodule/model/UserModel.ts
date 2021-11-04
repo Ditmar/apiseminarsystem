@@ -1,9 +1,13 @@
 import { Mongoose, Schema, Document } from "mongoose";
-
+export interface IAvatar {
+  url: string;
+  path: string;
+}
 export interface IUser {
   name?: string;
   email?: string;
   password?: string;
+  avatar?: Array<IAvatar>;
 }
 export interface User extends Document, IUser {
   createAt: Date;
@@ -22,6 +26,7 @@ const userSchema = new Schema({
     },
   },
   password: { type: String, required: true },
+  avatar: { type: Array, required: false },
   createAt: { type: Date, default: Date.now() },
   updateAt: { type: Date },
 });
